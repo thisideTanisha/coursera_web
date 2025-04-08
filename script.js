@@ -1,19 +1,44 @@
-(function () {
-    // Encapsulate code in an IIFE to avoid global variables
-    const init = function () {
-        // Get elements using a modular approach
-        const counterElement = document.getElementById('counter');
-        const button = document.getElementById('increment-btn');
-        
-        let count = 0;
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
 
-        // Add event listener (no onclick attribute)
-        button.addEventListener('click', function () {
-            count += 1;
-            counterElement.textContent = count;
-        });
-    };
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    // Run init when the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', init);
-})();
+input {
+    padding: 8px;
+    margin: 10px 0;
+    width: 250px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
