@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="LunchCheck">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 1 - Counter</title>
+    <title>Lunch Checker - Assignment 1</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Counter Assignment</h1>
-        <p>Count: <span id="counter">0</span></p>
-        <button id="increment-btn">Increment</button>
+    <div class="container" ng-controller="LunchCheckController as lunch">
+        <h1>Lunch Checker</h1>
+        <label>Enter your lunch items (comma-separated):</label><br>
+        <input type="text" ng-model="lunch.items" placeholder="e.g., pizza, salad, soup"><br>
+        <button ng-click="lunch.checkLunch()">Check If Too Much</button>
+        <p ng-class="lunch.messageClass">{{ lunch.message }}</p>
     </div>
-    <script src="js/script.js"></script>
 </body>
 </html>
