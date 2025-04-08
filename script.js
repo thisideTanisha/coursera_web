@@ -1,44 +1,34 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
+(function () {
+    'use strict';
 
-.container {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    angular.module('LunchCheck', [])
+        .controller('LunchCheckController', LunchCheckController);
 
-input {
-    padding: 8px;
-    margin: 10px 0;
-    width: 250px;
-}
+    function LunchCheckController() {
+        var lunch = this;
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        lunch.items = '';
+        lunch.message = '';
+        lunch.messageClass = '';
 
-button:hover {
-    background-color: #0056b3;
-}
+        lunch.checkLunch = function () {
+            if (!lunch.items.trim()) {
+                lunch.message = 'Please enter data first';
+                lunch.messageClass = 'error';
+                return;
+            }
 
-.success {
-    color: green;
-}
+            var itemsArray = lunch.items.split(',').filter(function (item) {
+                return item.trim() !== ''; // Ignore empty items
+            });
 
-.error {
-    color: red;
-}
+            if (itemsArray.length <= 3) {
+                lunch.message = 'Enjoy!';
+                lunch.messageClass = 'success';
+            } else {
+                lunch.message = 'Too much!';
+                lunch.messageClass = 'success';
+            }
+        };
+    }
+})();
